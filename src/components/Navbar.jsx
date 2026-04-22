@@ -6,25 +6,24 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();                 // clears token from context and localStorage
-    navigate("/login");       // sends user back to login page
+    logout();
+    navigate("/login");
   };
 
   return (
     <nav style={styles.nav}>
       <span style={styles.brand}>PrepAI</span>
-
       <div>
         {user ? (
-          // If user is logged in — show their name and logout button
           <>
             <span style={styles.welcome}>Hi, {user.name}</span>
+            <Link to="/dashboard"  style={styles.link}>Dashboard</Link>
+            <Link to="/interview"  style={styles.link}>Interview Prep</Link>
             <button onClick={handleLogout} style={styles.button}>
               Logout
             </button>
           </>
         ) : (
-          // If user is not logged in — show login and register links
           <>
             <Link to="/login"    style={styles.link}>Login</Link>
             <Link to="/register" style={styles.link}>Register</Link>
@@ -36,12 +35,15 @@ const Navbar = () => {
 };
 
 const styles = {
-  nav:     { display:"flex", justifyContent:"space-between", alignItems:"center",
-             padding:"12px 24px", background:"#1e1e2e", color:"#fff" },
+  nav:     { display:"flex", justifyContent:"space-between",
+             alignItems:"center", padding:"12px 24px",
+             background:"#1e1e2e", color:"#fff" },
   brand:   { fontSize:"20px", fontWeight:"700", color:"#a78bfa" },
-  link:    { color:"#fff", marginLeft:"16px", textDecoration:"none" },
+  link:    { color:"#fff", marginLeft:"16px", textDecoration:"none",
+             fontSize:"14px" },
   button:  { marginLeft:"16px", padding:"6px 14px", background:"#a78bfa",
-             border:"none", borderRadius:"6px", color:"#fff", cursor:"pointer" },
+             border:"none", borderRadius:"6px", color:"#fff",
+             cursor:"pointer" },
   welcome: { color:"#a78bfa", fontSize:"14px" },
 };
 

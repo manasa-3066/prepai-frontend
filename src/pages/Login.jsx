@@ -77,9 +77,10 @@ const Login = () => {
 
 const styles = {
   container: { display:"flex", justifyContent:"center",
-               alignItems:"center", minHeight:"90vh", background:"#0f0f1a" },
-  card:      { background:"#1e1e2e", padding:"40px", borderRadius:"12px",
-               width:"100%", maxWidth:"400px" },
+             alignItems:"center", minHeight:"90vh", 
+             background:"#0f0f1a", padding:"20px" },
+  card:      { background:"#1e1e2e", padding:"48px", borderRadius:"12px",
+             width:"100%", maxWidth:"480px" },
   title:     { color:"#fff", marginBottom:"24px", textAlign:"center" },
   input:     { width:"100%", padding:"12px", marginBottom:"16px",
                background:"#2a2a3e", border:"1px solid #3a3a5e",
