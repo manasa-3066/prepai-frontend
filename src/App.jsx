@@ -1,10 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Interview from "./pages/Interview";
+import SkillGap from "./pages/SkillGap";
+import ChatBot from "./pages/ChatBot";
+import Profile from "./pages/Profile";
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useAuth();
@@ -15,20 +19,42 @@ const ProtectedRoute = ({ children }) => {
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/register" element={<Register />} />
+        {/* Landing has its own navbar built in */}
+        <Route path="/" element={<Landing />} />
+
+        {/* Auth pages — no main navbar */}
         <Route path="/login"    element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
+        {/* Protected pages — main navbar shown */}
         <Route path="/dashboard" element={
-          <ProtectedRoute><Dashboard /></ProtectedRoute>
+          <ProtectedRoute>
+            <Navbar /><Dashboard />
+          </ProtectedRoute>
         }/>
-
         <Route path="/interview" element={
-          <ProtectedRoute><Interview /></ProtectedRoute>
+          <ProtectedRoute>
+            <Navbar /><Interview />
+          </ProtectedRoute>
+        }/>
+        <Route path="/skillgap" element={
+          <ProtectedRoute>
+            <Navbar /><SkillGap />
+          </ProtectedRoute>
+        }/>
+        <Route path="/chatbot" element={
+          <ProtectedRoute>
+            <Navbar /><ChatBot />
+          </ProtectedRoute>
+        }/>
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Navbar /><Profile />
+          </ProtectedRoute>
         }/>
 
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

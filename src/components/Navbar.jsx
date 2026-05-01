@@ -13,12 +13,15 @@ const Navbar = () => {
   return (
     <nav style={styles.nav}>
       <span style={styles.brand}>PrepAI</span>
-      <div>
+      <div style={styles.links}>
         {user ? (
           <>
             <span style={styles.welcome}>Hi, {user.name}</span>
             <Link to="/dashboard"  style={styles.link}>Dashboard</Link>
-            <Link to="/interview"  style={styles.link}>Interview Prep</Link>
+            <Link to="/interview"  style={styles.link}>Mock Interview</Link>
+            <Link to="/skillgap"   style={styles.link}>Skill Gap</Link>
+            <Link to="/chatbot" style={styles.link}>Study Assistant</Link>
+            <Link to="/profile" style={styles.link}>Profile</Link>
             <button onClick={handleLogout} style={styles.button}>
               Logout
             </button>
@@ -39,12 +42,13 @@ const styles = {
              alignItems:"center", padding:"12px 24px",
              background:"#1e1e2e", color:"#fff" },
   brand:   { fontSize:"20px", fontWeight:"700", color:"#a78bfa" },
-  link:    { color:"#fff", marginLeft:"16px", textDecoration:"none",
+  links:   { display:"flex", alignItems:"center", gap:"4px" },
+  link:    { color:"#ccc", marginLeft:"12px", textDecoration:"none",
              fontSize:"14px" },
   button:  { marginLeft:"16px", padding:"6px 14px", background:"#a78bfa",
              border:"none", borderRadius:"6px", color:"#fff",
-             cursor:"pointer" },
-  welcome: { color:"#a78bfa", fontSize:"14px" },
+             cursor:"pointer", fontSize:"13px" },
+  welcome: { color:"#a78bfa", fontSize:"14px", marginRight:"8px" },
 };
 
 export default Navbar;
